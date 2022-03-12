@@ -14,7 +14,7 @@ url = os.environ['url']
 
 authenticator = IAMAuthenticator(apikey)
 language_translator = LanguageTranslatorV3(
-    version='2022-03-09',
+    version='2018-05-01',
     authenticator=authenticator
 )
 """
@@ -28,8 +28,7 @@ def english_to_french(english_text):
     Function for English to French Translation
     """
     if english_text is None :
-        french_text = None
-        return french_text
+        return None
 
     translation = language_translator.translate(
     text=english_text,
@@ -43,8 +42,8 @@ def french_to_english(french_text):
     Function for French to English Translation
     """
     if french_text is None :
-        english_text = None
-        return english_text
+        return None
+
     translation = language_translator.translate(
     text=french_text,
     model_id='fr-en').get_result()
